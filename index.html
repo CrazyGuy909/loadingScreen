@@ -6,17 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link href="css/loading-please-wait.css" rel="stylesheet">
     <link href="css/loading-default.css" rel="stylesheet">
+    <style>
+      .background-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        animation: changeBackground 50s infinite;
+        z-index: -1;
+      }
+
+      @keyframes changeBackground {
+        0% { background-image: url('images/bg1.png'); opacity: 1; }
+        20% { opacity: 1; }
+        25% { background-image: url('images/bg2.png'); opacity: 1; }
+        45% { opacity: 1; }
+        50% { background-image: url('images/bg3.png'); opacity: 1; }
+        70% { opacity: 1; }
+        75% { background-image: url('images/bg1.png'); opacity: 1; }
+        100% { opacity: 1; }
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100vh;
+        position: relative;
+        background-color: black;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
   </head>
 
   <body ng-controller="MainCtrl" class="pg-loading ng-scope">
-    <div class="inner" ng-view></div>  
-    <div class="toolbar" ng-show="show">
-      <div class="panel panel-default">
-        <div id="download-box">
-          Welcome to Historia! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
-        </div>
-        <div id="download-box2">
-          WARNING: THIS SERVER IS RUNNING X64. FOR THE BEST EXPERIENCE PLEASE ENSURE YOU ARE RUNNING THE X86-64 BETA VERSION OF GARRY'S MOD.
+    <div class="background-container"></div>
+
+    <div class="content">
+      <div class="inner" ng-view></div>  
+      <div class="toolbar" ng-show="show">
+        <div class="panel panel-default">
+          <div id="download-box">
+            Welcome to Historia! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
+          </div>
+          <div id="download-box2">
+            WARNING: THIS SERVER IS RUNNING X64. FOR THE BEST EXPERIENCE PLEASE ENSURE YOU ARE RUNNING THE X86-64 BETA VERSION OF GARRY'S MOD.
+          </div>
         </div>
       </div>
     </div>
