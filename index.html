@@ -43,6 +43,15 @@
         position: relative;
         z-index: 1;
       }
+	  
+		.pg-loading .pg-loading-logo {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			width: 150px;
+			z-index: 1000;
+		}
+
     </style>
   </head>
 
@@ -76,7 +85,6 @@
     <script>
       window.loading_screen = window.pleaseWait({
         logo: "images/historiawatermark_large.png",
-        loadingHtml: "<div class='sk-spinner sk-spinner-wave'><div class='sk-rect1'><div class='sk-rect2'><div class='sk-rect3'><div class='sk-rect4'><div class='sk-rect5'>"
       });
     </script>
   </body>
