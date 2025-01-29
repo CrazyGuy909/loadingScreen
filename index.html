@@ -15,18 +15,20 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-        animation: changeBackground 50s infinite;
+        animation: changeBackground 60s infinite;
         z-index: -1;
       }
 
       @keyframes changeBackground {
-        0% { background-image: url('images/bg1.png'); opacity: 1; }
-        20% { opacity: 1; }
-        25% { background-image: url('images/bg2.png'); opacity: 1; }
-        45% { opacity: 1; }
-        50% { background-image: url('images/bg3.png'); opacity: 1; }
-        70% { opacity: 1; }
-        75% { background-image: url('images/bg1.png'); opacity: 1; }
+        0% { background-image: url('images/bg1.jpg'); opacity: 1; }
+        15% { opacity: 1; }
+        20% { background-image: url('images/bg2.jpg'); opacity: 1; }
+        35% { opacity: 1; }
+        40% { background-image: url('images/bg3.jpg'); opacity: 1; }
+        55% { opacity: 1; }
+        60% { background-image: url('images/bg4.jpg'); opacity: 1; }
+        75% { opacity: 1; }
+        80% { background-image: url('images/bg1.jpg'); opacity: 1; }
         100% { opacity: 1; }
       }
 
@@ -43,14 +45,14 @@
         position: relative;
         z-index: 1;
       }
-	  
-		.pg-loading .pg-loading-logo {
-			position: fixed;
-			bottom: 20px;
-			left: 20px;
-			width: 150px;
-			z-index: 1000;
-		}
+
+      .pg-loading .pg-loading-logo {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 150px;
+        z-index: 1000;
+      }
 
     </style>
   </head>
