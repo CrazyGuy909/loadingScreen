@@ -15,21 +15,7 @@
         height: 100%;
         background-size: cover;
         background-position: center;
-        animation: changeBackground 60s infinite;
         z-index: -1;
-      }
-
-      @keyframes changeBackground {
-        0% { background-image: url('images/bg1.jpg'); opacity: 1; }
-        15% { opacity: 1; }
-        20% { background-image: url('images/bg2.jpg'); opacity: 1; }
-        35% { opacity: 1; }
-        40% { background-image: url('images/bg3.jpg'); opacity: 1; }
-        55% { opacity: 1; }
-        60% { background-image: url('images/bg4.jpg'); opacity: 1; }
-        75% { opacity: 1; }
-        80% { background-image: url('images/bg1.jpg'); opacity: 1; }
-        100% { opacity: 1; }
       }
 
       body {
@@ -53,12 +39,11 @@
         width: 150px;
         z-index: 1000;
       }
-
     </style>
   </head>
 
   <body ng-controller="MainCtrl" class="pg-loading ng-scope">
-    <div class="background-container"></div>
+    <div class="background-container" id="background"></div>
 
     <div class="content">
       <div class="inner" ng-view></div>  
@@ -88,6 +73,19 @@
       window.loading_screen = window.pleaseWait({
         logo: "images/historiawatermark_large.png",
       });
+    </script>
+    
+    <script>
+      const images = ['images/bg1.jpg', 'images/bg2.jpg', 'images/bg3.jpg', 'images/bg4.jpg'];
+      let currentIndex = 0;
+
+      function changeBackground() {
+        document.getElementById('background').style.backgroundImage = `url('${images[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % images.length;
+      }
+      
+      changeBackground();
+      setInterval(changeBackground, 15000);
     </script>
   </body>
 </html>
