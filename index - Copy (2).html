@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="AngularApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="css/loading-please-wait.css" rel="stylesheet">
+    <link href="css/loading-default.css" rel="stylesheet">
+    <style>
+      .background-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        height: 100vh;
+        position: relative;
+        background-color: black;
+      }
+
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .pg-loading .pg-loading-logo {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 150px;
+        z-index: 1000;
+      }
+    </style>
+  </head>
+
+  <body ng-controller="MainCtrl" class="pg-loading ng-scope">
+    <div class="background-container" id="background"></div>
+
+    <div class="content">
+      <div class="inner" ng-view></div>  
+      <div class="toolbar" ng-show="show">
+        <div class="panel panel-default">
+          <div id="download-box">
+            Welcome to Historia! In order to ensure your experience on our server isn't interrupted by errors, please allow for all of our server content to be downloaded to your game. We promise it'll be worth the wait. Enjoy your stay!
+          </div>
+          <div id="download-box2">
+            WARNING: THIS SERVER IS RUNNING X64. FOR THE BEST EXPERIENCE PLEASE ENSURE YOU ARE RUNNING THE X86-64 BETA VERSION OF GARRY'S MOD.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/1.3.5-angular.min.js"></script>
+
+    <script>
+      angular.module('AngularApp', [])
+        .controller('MainCtrl', ['$scope', function ($scope) {
+          $scope.show = true;
+        }]);
+    </script>
+
+    <script src="js/please_wait.min.js"></script>
+    <script>
+      window.loading_screen = window.pleaseWait({
+        logo: "images/historiawatermark_large.png",
+      });
+    </script>
+    
+    <script>
+      const images = ['images/bg1.jpg', 'images/bg2.jpg', 'images/bg3.jpg', 'images/bg4.jpg'];
+      let currentIndex = 0;
+
+      function changeBackground() {
+        document.getElementById('background').style.backgroundImage = `url('${images[currentIndex]}')`;
+        currentIndex = (currentIndex + 1) % images.length;
+      }
+      
+      changeBackground();
+      setInterval(changeBackground, 15000);
+    </script>
+  </body>
+</html>
